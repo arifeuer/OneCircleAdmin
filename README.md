@@ -1,6 +1,6 @@
 == README
 
-#Travis CI Status Badge:
+# `Travis CI Status Badge:
 [![Build Status](https://travis-ci.org/arifeuer/cs169ocf.svg?branch=master)](https://travis-ci.org/arifeuer/cs169ocf)
 
 Heroku: https://onecircleadmin.herokuapp.com/
