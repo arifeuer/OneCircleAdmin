@@ -1,7 +1,7 @@
 == README
 
 ### Status
-[![Build Status](https://travis-ci.org/arifeuer/UtilityBehaviors.png)](https://travis-ci.org/arifeuer/UtilityBehaviors)
+[![Build Status](https://travis-ci.org/arifeuer/cs169ocf.png)](https://travis-ci.org/arifeuer/cs169ocf)
 
 Heroku: https://onecircleadmin.herokuapp.com/
 Pivotal Tracker: https://www.pivotaltracker.com/n/projects/1543433
