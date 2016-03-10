@@ -1,3 +1,29 @@
-%h1 New Form
-= render 'form'
-= link_to 'Back', forms_path
+%h1 Generate STC Sign In Sheet
+
+= form_tag new_form_path do
+  
+  = label :form, :certification_number, 'Certification Number'
+  = text_field :form, 'certification_number'
+  
+  = label :form, :stc_field_representative, 'STC Field Representative'
+  = text_field :form, 'stc_field_representative'
+  
+  = label :form, :start_date, 'Start Date'
+  = text_field :form, 'start_date'
+  
+  = label :form, :end_date, 'End Date'
+  = text_field :form, 'end_date'
+  
+  = label :form, :location, 'Location'
+  = text_field :form, 'location'
+  
+  = label :form, :certified_date, 'Certified Date'
+  = text_field :form, 'certified_date'
+  
+  = label :form, :course_title, 'Course Title'
+  = select :form, :course_title, ['The Council Facilitator Training', 'Girls Circle Facilitator Training']
+  
+  = label :form, :total_participants, 'Total Participants'
+  = text_field :form, 'total_participants'
+
+  = submit_tag 'Save Changes'
