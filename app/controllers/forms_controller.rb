@@ -1,7 +1,7 @@
 class FormsController < ApplicationController
   before_action :set_form, only: [:show, :edit, :update, :destroy]
   
-  def movie_params
+  def form_params
     params.require(:form).permit(:stc_field_representative, :certification_number, :start_date, :end_date, :location, :certified_date, :course_title, :total_participants)
   end
     
@@ -28,8 +28,10 @@ class FormsController < ApplicationController
   # POST /forms
   # POST /forms.json
   def create
-    @form = Form.create!(forms_params)
-    flash[:notice] = "#{@forms.type} was successfully created."
+    @form = Form.create!(form_params)
+    @form.generate_stc(params["file"].tempfile)
+    debugger
+    flash[:notice] = "#{@form.type} was successfully created."
     redirect_to forms_path
   end
 
