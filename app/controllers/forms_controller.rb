@@ -1,5 +1,9 @@
 class FormsController < ApplicationController
   before_action :set_form, only: [:show, :edit, :update, :destroy]
+  
+  def movie_params
+    params.require(:form).permit(:stc_field_representative, :certification_number, :start_date, :end_date, :location, :certified_date, :course_title, :total_participants)
+  end
     
   # GET /forms
   # GET /forms.json
@@ -24,17 +28,9 @@ class FormsController < ApplicationController
   # POST /forms
   # POST /forms.json
   def create
-    @form = Form.new(form_params)
-
-    respond_to do |format|
-      if @form.save
-        format.html { redirect_to @form, notice: 'Form was successfully created.' }
-        format.json { render :show, status: :created, location: @form }
-      else
-        format.html { render :new }
-        format.json { render json: @form.errors, status: :unprocessable_entity }
-      end
-    end
+    @form = Form.create!(forms_params)
+    flash[:notice] = "#{@forms.type} was successfully created."
+    redirect_to forms_path
   end
 
   # PATCH/PUT /forms/1

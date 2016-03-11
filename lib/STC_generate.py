@@ -28,49 +28,23 @@ certified_date = sys.argv[6]
 title_course = sys.argv[7]
 total_part = sys.argv[8]
 
+FIELDS = {"FIELD_REP": field_rep, 
+			"CERT_NUMBER": cert_number,
+			"START_DATE": start_date, 
+			"END_DATE": end_date, 
+			"LOCATION_TO_EDIT": location_to_edit, 
+			"CERTIFIED_DATE": certified_date, 
+			"TITLE_COURSE": title_course, 
+			"TOTAL_PART": total_part}
+
 for p in document.tables:
 	for c in p.columns:
 		for n in c.cells:
-
-			if "FIELD_REP" in n.text:
-				for a in n.paragraphs:
-					if "FIELD_REP" in a.text:
-						a.text = a.text.replace("FIELD_REP", field_rep)
-
-			if "CERT_NUMBER" in n.text:
-				for a in n.paragraphs:
-					if "CERT_NUMBER" in a.text:
-						a.text = a.text.replace("CERT_NUMBER", cert_number)
-
-			if "START_DATE" in n.text:
-				for a in n.paragraphs:
-					if "START_DATE" in a.text:
-						a.text = a.text.replace("START_DATE", start_date)
-
-			if "END_DATE" in n.text:
-				for a in n.paragraphs:
-					if "END_DATE" in a.text:
-						a.text = a.text.replace("END_DATE", end_date)
-
-			if "LOCATION_TO_EDIT" in n.text:
-				for a in n.paragraphs:
-					if "LOCATION_TO_EDIT" in a.text:
-						a.text = a.text.replace("LOCATION_TO_EDIT", location_to_edit)
-
-
-			if "CERTIFIED_DATE" in n.text:
-				for a in n.paragraphs:
-					if "CERTIFIED_DATE" in a.text:
-						a.text = a.text.replace("CERTIFIED_DATE", certified_date)
-
-			if "TITLE_COURSE" in n.text:
-				for a in n.paragraphs:
-					if "TITLE_COURSE" in a.text:
-						a.text = a.text.replace("TITLE_COURSE", title_course)
-
-			if "TOTAL_PART" in n.text:
-				for a in n.paragraphs:
-					if "TOTAL_PART" in a.text:
-						a.text = a.text.replace("TOTAL_PART", total_part)
+	
+			for field in FIELDS:
+				if field in n.text:
+					for a in n.paragraphs:
+						if field in a.text:
+							a.text = a.text.replace(field, FIELDS[field]) 
 
 document.save('test.doc')

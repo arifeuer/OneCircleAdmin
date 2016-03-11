@@ -2,12 +2,12 @@
 %title Generate STC Sign In Sheet
 
 = form_tag new_form_path, :multipart=>true do
+
+  = label :form, :stc_field_representative, 'STC Field Representative'
+  = text_field :form, 'stc_field_representative'
   
   = label :form, :certification_number, 'Certification Number'
   = text_field :form, 'certification_number'
-  
-  = label :form, :stc_field_representative, 'STC Field Representative'
-  = text_field :form, 'stc_field_representative'
   
   = label :form, :start_date, 'Start Date'
   = text_field :form, 'start_date'
@@ -29,6 +29,6 @@
   
   = file_field_tag :file
   = submit_tag "Import"
-
+  
   = submit_tag 'Generate'
 
