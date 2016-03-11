@@ -1,7 +1,7 @@
 %h1 Generate STC Sign In Sheet
 %title Generate STC Sign In Sheet
 
-= form_tag new_form_path do
+= form_tag new_form_path, :multipart=>true do
   
   = label :form, :certification_number, 'Certification Number'
   = text_field :form, 'certification_number'
@@ -26,6 +26,9 @@
   
   = label :form, :total_participants, 'Total Participants'
   = text_field :form, 'total_participants'
+  
+  = file_field_tag :file
+  = submit_tag "Import"
 
   = submit_tag 'Generate'
 
