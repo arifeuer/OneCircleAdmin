@@ -16,7 +16,7 @@ import sys
 document = Document('STC Sign in Sheet - GILRS.docx')
 
 if len(sys.argv) < 9:
-	print "not enough arguments"
+	print("not enough arguments")
 	sys.exit()
 
 field_rep = sys.argv[1]
