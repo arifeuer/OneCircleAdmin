@@ -13,7 +13,7 @@ import sys
 # Course Title
 
 
-document = Document('STC Sign in Sheet - GILRS.docx')
+document = Document('STC Sign In Template.docx')
 
 if len(sys.argv) < 9:
 	print("not enough arguments")
@@ -47,4 +47,4 @@ for p in document.tables:
 						if field in a.text:
 							a.text = a.text.replace(field, FIELDS[field]) 
 
-document.save('test.doc')
+document.save('STC Sign In Template.docx')
