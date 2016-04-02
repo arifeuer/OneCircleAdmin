@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160402033759) do
+ActiveRecord::Schema.define(version: 20160402035349) do
 
   create_table "forms", force: :cascade do |t|
     t.string   "type"
@@ -31,7 +31,6 @@ ActiveRecord::Schema.define(version: 20160402033759) do
     t.string "training_title"
     t.string "training_type"
     t.string "location"
-    t.string "date"
     t.string "certification_number"
     t.string "course_start_date"
     t.string "course_end_date"
