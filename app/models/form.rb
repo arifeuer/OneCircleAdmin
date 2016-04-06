@@ -1,5 +1,4 @@
 class Form < ActiveRecord::Base
-    #attr_accessor :stc_field_representative, :certification_number, :start_date, :end_date, :location, :certified_date, :course_title, :total_participants 
     
     #def generate_stc(template_filenamte)
     #    `python lib/STC_generate.py template_filenamte #{:stc_field_representative}, #{:certification_number}, #{:start_date}, #{:end_date}, #{:location}, #{:certified_date}, #{:course_title}, #{:total_participants} 'STC Sign In Sheet'`
