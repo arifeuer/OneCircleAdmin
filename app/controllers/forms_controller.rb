@@ -61,7 +61,7 @@ class FormsController < ApplicationController
     respond_to do |format|
       format.docx do
         # Initialize DocxReplace with your template
-        doc = DocxReplace::Doc.new("#{Rails.root}/lib/form_templates/STC_Sign_In_Template.docx.docx", "#{Rails.root}/tmp")
+        doc = DocxReplace::Doc.new("#{Rails.root}/lib/form_templates/STC_Sign_In_Template.docx", "#{Rails.root}/tmp")
   
         # Replace some variables. $var$ convention is used here, but not required.
         doc.replace("FIELD_REP", @form.stc_field_representative)
