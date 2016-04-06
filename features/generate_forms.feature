@@ -27,4 +27,11 @@ Scenario: Generate sign in forms
   And I should see "Course Title"
   And I should see "Total Participants"
   
-  #Then I click "Generate" 
+#Scenario: Selecting from the Dropdown
+  When I select "Girls Circle Facilitator Training" from "Course Title"
+  When I select "Girls Circle Facilitator Training" from "Course Title"
+  
+  Then I follow "file"
+  #Then I upload a valid file
+  
+  #When I press "Generate" 

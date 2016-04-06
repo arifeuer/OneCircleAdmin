@@ -49,7 +49,14 @@ When /^(?:|I )go to (.+)$/ do |page_name|
   visit path_to(page_name)
 end
 
+# When /^I select "(.*)" from "(.*)"$/ do |value, field|
+#   select(value, :from => field) 
+# end
 
+When /^I upload a valid file$/ do
+  attach_file(:csv_file, File.join(RAILS_ROOT, 'features', 'upload-files', 'good-file.csv'))
+  click_button "Send file"
+end
 
 
 
