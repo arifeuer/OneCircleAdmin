@@ -16,4 +16,4 @@
 !/log/.keep
 /tmp
 
-/lib/form_templates/*
+#/lib/form_templates/*
