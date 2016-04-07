@@ -57,6 +57,9 @@ class FormsController < ApplicationController
   end
   
   def form_replace
+    #Using docx_replace gem
+    #https://github.com/adamalbrecht/docx_replace
+    
     doc = DocxReplace::Doc.new("#{Rails.root}/lib/form_templates/STC_Sign_In_Template.docx", "#{Rails.root}/tmp")
 
     # Replace some variables. $var$ convention is used here, but not required.
