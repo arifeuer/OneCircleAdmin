@@ -1,9 +1,5 @@
 class FormsController < ApplicationController
   before_action :set_form, only: [:show, :edit, :update, :destroy]
-  
-  def movie_params
-    params.require(:form).permit(:stc_field_representative, :certification_number, :start_date, :end_date, :location, :certified_date, :course_title, :total_participants)
-  end
     
   # GET /forms
   # GET /forms.json
@@ -28,9 +24,13 @@ class FormsController < ApplicationController
   # POST /forms
   # POST /forms.json
   def create
-    @form = Form.create!(forms_params)
-    flash[:notice] = "#{@forms.type} was successfully created."
-    redirect_to forms_path
+    @form = Form.create!(form_params)
+    send_file(
+    "#{Rails.root}/lib/form_templates/STC_Sign_In_Template.docx",
+    filename: "STC_Sign_In_Sheet.docx",
+    disposition: "attachment"
+    )
+    flash[:notice] = "#{@form.type} was successfully created."
   end
 
   # PATCH/PUT /forms/1
@@ -65,6 +65,6 @@ class FormsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def form_params
-      params.require(:form).permit(:type)
+      params.require(:form).permit(:stc_field_representative, :certification_number, :start_date, :end_date, :location, :certified_date, :course_title, :total_participants)
     end
 end
