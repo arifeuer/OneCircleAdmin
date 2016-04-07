@@ -8,14 +8,14 @@ class Form < ActiveRecord::Base
     def generate_stc(template_filename)
         doc = DocxReplace::Doc.new(template_filename, "#{Rails.root}/tmp")
         
-        fields = {"FIELD_REP": stc_field_representative, 
-			"CERT_NUMBER": certification_number,
-			"START_DATE": start_date, 
-			"END_DATE": end_date, 
-			"LOCATION_TO_EDIT": location, 
-			"CERTIFIED_DATE": certified_date, 
-			"TITLE_COURSE": course_title, 
-			"TOTAL_PART": total_participants}
+        fields = {"FIELD_REP"=> stc_field_representative, 
+			"CERT_NUMBER"=> certification_number,
+			"START_DATE"=> start_date, 
+			"END_DATE"=> end_date, 
+			"LOCATION_TO_EDIT"=> location, 
+			"CERTIFIED_DATE"=> certified_date, 
+			"TITLE_COURSE"=> course_title, 
+			"TOTAL_PART"=> total_participants}
 			
 		#doc.tables.each do |table|
 		#    table.columns.each do |column|
