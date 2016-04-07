@@ -3,7 +3,7 @@
 Travis CI Status Badge:
 [![Build Status](https://travis-ci.org/arifeuer/cs169ocf.svg?branch=master)](https://travis-ci.org/arifeuer/cs169ocf)
 
-[![Code Climate](https://codeclimate.com/github/arifeuer/cs169ocf)](https://codeclimate.com/github/arifeuer/cs169ocf)
+[![Code Climate](https://codeclimate.com/github/arifeuer/cs169ocf.svg?)](https://codeclimate.com/github/arifeuer/cs169ocf.svg?)
 
 Heroku: https://onecircleadmin.herokuapp.com/
 Pivotal Tracker: https://www.pivotaltracker.com/n/projects/1543433
