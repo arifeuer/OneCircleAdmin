@@ -29,7 +29,7 @@ class FormsController < ApplicationController
     form_replace
     
     flash[:notice] = "#{@form.type} was successfully created."
-    redirect_to forms_path
+    #redirect_to forms_path
   end
 
   # PATCH/PUT /forms/1
@@ -57,30 +57,24 @@ class FormsController < ApplicationController
   end
   
   def form_replace
-    debugger
-    respond_to do |format|
-      format.docx do
-        # Initialize DocxReplace with your template
-        doc = DocxReplace::Doc.new("#{Rails.root}/lib/form_templates/STC_Sign_In_Template.docx", "#{Rails.root}/tmp")
-  
-        # Replace some variables. $var$ convention is used here, but not required.
-        doc.replace("FIELD_REP", @form.stc_field_representative)
-        doc.replace("CERT_NUMBER", @form.certification_number)
-        doc.replace("START_DATE", @form.start_date)
-        doc.replace("END_DATE", @form.end_date)
-        doc.replace("LOCATION_TO_EDIT", @form.location)
-        doc.replace("CERTIFIED_DATE", @form.certified_date)
-        doc.replace("TITLE_COURSE", @form.course_title)
-        doc.replace("TOTAL_PART", @form.total_participants)
-  
-        # Write the document back to a temporary file
-        tmp_file = Tempfile.new('word_template', "#{Rails.root}/tmp")
-        doc.commit(tmp_file.path)
-  
-        # Respond to the request by sending the temp file
-        send_file tmp_file.path, filename: "STC_Sign_In_Sheet.docx", disposition: 'attachment'
-      end
-    end
+    doc = DocxReplace::Doc.new("#{Rails.root}/lib/form_templates/STC_Sign_In_Template.docx", "#{Rails.root}/tmp")
+
+    # Replace some variables. $var$ convention is used here, but not required.
+    doc.replace("FIELD_REP", @form.stc_field_representative)
+    doc.replace("CERT_NUMBER", @form.certification_number)
+    doc.replace("START_DATE", @form.start_date)
+    doc.replace("END_DATE", @form.end_date)
+    doc.replace("LOCATION_TO_EDIT", @form.location)
+    doc.replace("CERTIFIED_DATE", @form.certified_date)
+    doc.replace("TITLE_COURSE", @form.course_title)
+    doc.replace("TOTAL_PART", @form.total_participants)
+
+    # Write the document back to a temporary file
+    tmp_file = Tempfile.new('word_template', "#{Rails.root}/tmp")
+    doc.commit(tmp_file.path)
+
+    # Respond to the request by sending the temp file
+    send_file tmp_file.path, filename: "STC_Sign_In_Sheet.docx", disposition: 'attachment'
   end
 
   private
