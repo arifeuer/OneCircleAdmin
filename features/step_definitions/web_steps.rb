@@ -49,15 +49,55 @@ When /^(?:|I )go to (.+)$/ do |page_name|
   visit path_to(page_name)
 end
 
-# When /^I select "(.*)" from "(.*)"$/ do |value, field|
-#   select(value, :from => field) 
+# When /^I upload a valid file$/ do
+#   attach_file(:csv_file, File.join(RAILS_ROOT, 'features', 'upload-files', 'good-file.csv'))
+#   click_button "Send file"
 # end
 
-When /^I upload a valid file$/ do
-  attach_file(:csv_file, File.join(RAILS_ROOT, 'features', 'upload-files', 'good-file.csv'))
-  click_button "Send file"
+# When /^I upload an invalid file$/ do
+#   attach_file(:csv_file, File.join(RAILS_ROOT, 'features', 'upload-files', 'bad-file.csv'))
+#   click_button "Send file"
+# end
+
+When(/^I upload a valid file$/) do
+  #page.execute_script("document.getElementsByName('file')[0].style.opacity = 1")
+  page.attach_file("Choose File", 'features/upload-files/good-file.csv')
 end
 
+When(/^I upload an invalid file$/) do
+  page.attach_file("Choose File", 'features/upload-files/bad-file.csv')
+end
+
+Then /^I should receive a valid file$/ do |filename|
+  filename.should have_content("STC Field Representative")
+  filename.should have_content("Certification Number")
+  filename.should have_content("Start Date")
+  filename.should have_content("End Date")
+  filename.should have_content("Location")
+  filename.should have_content("Certified Date")
+  filename.should have_content("Course Title")
+  filename.should have_content("Total Participants")
+end
+
+Then /^I should receive an invalid file$/ do |filename|
+  filename.should have_no_content("STC Field Representative")
+  filename.should have_no_content("Certification Number")
+  filename.should have_no_content("Start Date")
+  filename.should have_no_content("End Date")
+  filename.should have_no_content("Location")
+  filename.should have_no_content("Certified Date")
+  filename.should have_no_content("Course Title")
+  filename.should have_no_content("Total Participants")
+end
+
+Then /^the "([^"]*)" field should( not)? be empty$/ do |field, negate|
+  expectation = negate ? :should_not : :should
+  field_labeled(field).value.send(expectation, be_blank)
+end
+
+Then /^I should get a download with the filename "([^\"]*)"$/ do |filename|
+    page.response_headers['Content-Disposition'].should include("filename=\"#{filename}\"")
+end
 
 
 
@@ -139,22 +179,6 @@ Then /^(?:|I )should see "([^"]*)"$/ do |text|
   end
 end
 
-
-Then(/^I must be on the page with the title: "([^"]*)"$/) do |page_title|
-    page.should have_css('title', :text => page_title)
-end
-
-
-Then /^(?:|I )should see \/([^\/]*)\/$/ do |regexp|
-  regexp = Regexp.new(regexp)
-
-  if page.respond_to? :should
-    page.should have_xpath('//*', :text => regexp)
-  else
-    assert page.has_xpath?('//*', :text => regexp)
-  end
-end
-
 Then /^(?:|I )should not see "([^"]*)"$/ do |text|
   if page.respond_to? :should
     page.should have_no_content(text)
@@ -163,9 +187,12 @@ Then /^(?:|I )should not see "([^"]*)"$/ do |text|
   end
 end
 
-Then /^(?:|I )should not see \/([^\/]*)\/$/ do |regexp|
-  regexp = Regexp.new(regexp)
+Then(/^I must be on the page with the title: "([^"]*)"$/) do |page_title|
+    page.should have_css('title', :text => page_title)
+end
 
+
+Then /^(?:|I )should not see \/([^\/]*)\/$/ do |regexp|
   if page.respond_to? :should
     page.should have_no_xpath('//*', :text => regexp)
   else
