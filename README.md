@@ -2,9 +2,9 @@ README
 
 Travis CI Status Badge:
 [![Build Status](https://travis-ci.org/arifeuer/cs169ocf.svg?branch=master)](https://travis-ci.org/arifeuer/cs169ocf)
+
 Code Climate GPA: 
 [![Code Climate](https://codeclimate.com/github/arifeuer/cs169ocf.svg)](https://codeclimate.com/github/arifeuer/cs169ocf)
-
 
 
 
