@@ -27,21 +27,27 @@ Scenario: Generate sign in forms
   And I should see "Certified Date"
   And I should see "Course Title"
   And I should see "Total Participants"
-  
+
+
+ 
 #Scenario: Selecting from the Dropdown
   When I select "Girls Circle Facilitator Training" from "Course Title"
   When I select "Girls Circle Facilitator Training" from "Course Title"
-  
-Scenario: Valid File  
+
+
+Scenario: Valid File 
+  Given PENDING:
   #When I press "Choose File"
   Then I upload a valid file
   Then I should receive a valid file
 
 Scenario: Invalid File
+  Given PENDING
   #When I press "Choose File"
   Then I upload an invalid file
   Then I should receive an invalid file
 
 Scenario: Generating Form  
+  Given  PENDING
   When I press "Generate"
   Then I should get a download with the filename "STC_Sign_In_Sheet.docx"

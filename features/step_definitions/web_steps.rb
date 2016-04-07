@@ -100,8 +100,9 @@ Then /^I should get a download with the filename "([^\"]*)"$/ do |filename|
 end
 
 
-
-
+Given /^PENDING/ do
+  pending
+end
 
 
 
@@ -314,3 +315,5 @@ end
 Then /^show me the page$/ do
   save_and_open_page
 end
+
+
