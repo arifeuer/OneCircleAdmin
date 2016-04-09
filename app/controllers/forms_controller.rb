@@ -17,6 +17,10 @@ class FormsController < ApplicationController
     #default new view
   end
 
+  # GET /forms/new_stc_forms_path
+  def new_stc_forms_path
+  end
+
   # GET /forms/1/edit
   def edit
   end

@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
   resources :forms
   mount JasmineRails::Engine => '/specs' if defined?(JasmineRails)
-  root 'forms#newform'
+  root 'forms#trainingtype'
   
-  
+  get '/new_stc', to: 'forms#new_stc'
   
 
   # The priority is based upon order of creation: first created -> highest priority.
