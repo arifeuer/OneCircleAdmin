@@ -34,6 +34,7 @@ end
 #   click_button "Send file"
 # end
 
+
 # When /^I upload an invalid file$/ do
 #   attach_file(:csv_file, File.join(RAILS_ROOT, 'features', 'upload-files', 'bad-file.csv'))
 #   click_button "Send file"
@@ -41,6 +42,22 @@ end
 
 When(/^I upload a valid file$/) do
   page.execute_script("document.getElementsByName('file')[0].style.opacity = 1")
+  page.attach_file("Choose File", 'features/upload-files/good-file.csv')
+end
+
+When(/^I upload an invalid file$/) do
+  page.attach_file("Choose File", 'features/upload-files/bad-file.csv')
+end
+
+
+
+# When /^I upload an invalid file$/ do
+#   attach_file(:csv_file, File.join(RAILS_ROOT, 'features', 'upload-files', 'bad-file.csv'))
+#   click_button "Send file"
+# end
+
+When(/^I upload a valid file$/) do
+  #page.execute_script("document.getElementsByName('file')[0].style.opacity = 1")
   page.attach_file("Choose File", 'features/upload-files/good-file.csv')
 end
 
@@ -80,8 +97,30 @@ Then /^I should get a download with the filename "([^\"]*)"$/ do |filename|
 end
 
 
+Then /^I should receive an invalid file$/ do |filename|
+  filename.should have_no_content("STC Field Representative")
+  filename.should have_no_content("Certification Number")
+  filename.should have_no_content("Start Date")
+  filename.should have_no_content("End Date")
+  filename.should have_no_content("Location")
+  filename.should have_no_content("Certified Date")
+  filename.should have_no_content("Course Title")
+  filename.should have_no_content("Total Participants")
+end
+
+Then /^the "([^"]*)" field should( not)? be empty$/ do |field, negate|
+  expectation = negate ? :should_not : :should
+  field_labeled(field).value.send(expectation, be_blank)
+end
+
+Then /^I should get a download with the filename "([^\"]*)"$/ do |filename|
+    page.response_headers['Content-Disposition'].should include("filename=\"#{filename}\"")
+end
 
 
+Given /^PENDING/ do
+  pending
+end
 
 
 
@@ -293,4 +332,3 @@ end
 
 Then /^show me the page$/ do
   save_and_open_page
-end

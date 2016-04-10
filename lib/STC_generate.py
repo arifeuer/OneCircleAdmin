@@ -12,21 +12,23 @@ import sys
 # Date Certified
 # Course Title
 
-
-document = Document('STC Sign In Template.docx')
-
-if len(sys.argv) < 9:
+if len(sys.argv) < 11:
 	print("not enough arguments")
 	sys.exit()
 
-field_rep = sys.argv[1]
-cert_number = sys.argv[2]
-start_date = sys.argv[3]
-end_date = sys.argv[4]
-location_to_edit = sys.argv[5]
-certified_date = sys.argv[6]
-title_course = sys.argv[7]
-total_part = sys.argv[8]
+in_filename = sys.argv[1]
+field_rep = sys.argv[2]
+cert_number = sys.argv[3]
+start_date = sys.argv[4]
+end_date = sys.argv[5]
+location_to_edit = sys.argv[6]
+certified_date = sys.argv[7]
+title_course = sys.argv[8]
+total_part = sys.argv[9]
+out_filename = sys.argv[10]
+
+document = Document(in_filename)
+
 
 FIELDS = {"FIELD_REP": field_rep, 
 			"CERT_NUMBER": cert_number,
@@ -47,4 +49,4 @@ for p in document.tables:
 						if field in a.text:
 							a.text = a.text.replace(field, FIELDS[field]) 
 
-document.save('STC Sign In Template.docx')
+document.save(out_filename)
