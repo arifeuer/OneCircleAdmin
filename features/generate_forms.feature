@@ -18,8 +18,9 @@ Scenario: Generate sign in forms
   #Can we test the route here?
   Then I must be on the page with the title: "Generate STC Sign In Sheet" 
   #enter step(s) to check if the correct input fields are available
-  Then I should see "Certification Number"
-  And I should see "STC Field Representative"
+  Then I should see "STC Field Representative"
+  And I should see "Certification Number"
+  #Then the "form_certification_number" field should contain "^$"
   And I should see "Start Date"
   And I should see "End Date"
   And I should see "Location"
@@ -27,4 +28,21 @@ Scenario: Generate sign in forms
   And I should see "Course Title"
   And I should see "Total Participants"
   
-  #Then I click "Generate" 
+#Scenario: Selecting from the Dropdown
+  When I select "Girls Circle Facilitator Training" from "Course Title"
+  When I select "Girls Circle Facilitator Training" from "Course Title"
+  
+Scenario: Valid File  
+  #When I press "Choose File"
+  Then I upload a valid file
+  Then I should receive a valid file
+
+Scenario: Invalid File
+  When I press "Choose File"
+  Then I upload an invalid file
+  Then I should receive an invalid file
+
+Scenario: Generating Form  
+  When I press "Generate"
+  Then I should get a download with the filename "STC_Sign_In_Sheet.docx"
+  
