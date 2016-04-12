@@ -3,7 +3,8 @@ Rails.application.routes.draw do
   mount JasmineRails::Engine => '/specs' if defined?(JasmineRails)
   root 'forms#trainingtype'
   
-  get '/new_stc', to: 'forms#new_stc'
+  get '/generate_forms', to: 'forms#generate_forms'
+  get '/trainingtype', to: "forms#trainingtype"
   
 
   # The priority is based upon order of creation: first created -> highest priority.
