@@ -87,7 +87,7 @@ class FormsController < ApplicationController
 
     # Respond to the request by sending the temp file
     #send_file tmp_file.path, filename: "STC_Sign_In_Sheet.docx", disposition: 'attachment'
-    send_file tmp_file.path, filename: "#{@type} test.docx", disposition: 'attachment'
+    send_file tmp_file.path, filename: "STC_Sign_In_Sheet.docx", disposition: 'attachment'
   end
 
   private
