@@ -1,9 +1,11 @@
-%h1 Generate STC Sign In Sheet
-%title Generate STC Sign In Sheet
+%h1 Generate #{@type} #{@sheet}
+%title Generate #{@type} #{@sheet}
+
+
 
 = form_tag forms_path, :multipart=>true do
 
-  = label :form, :stc_field_representative, 'STC Field Representative'
+  = label :form, :stc_field_representative, 'Field Representative'
   = text_field :form, 'stc_field_representative'
   
   = label :form, :certification_number, 'Certification Number'
@@ -27,7 +29,11 @@
   = label :form, :total_participants, 'Total Participants'
   = text_field :form, 'total_participants'
   
-  = file_field_tag :file
+  = file_field_tag "Choose File"
 
   = submit_tag 'Generate'
+  
+%br
+%br
+= link_to "Back", generate_forms_path(:type => @type)
 

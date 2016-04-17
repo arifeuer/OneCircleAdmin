@@ -10,14 +10,30 @@ Background: training in database
   # a list of trainings on the home page. Insteaf we are creating a new training by completing the form -Kishan
 
 
+<<<<<<< HEAD
 Scenario: Generate sign in forms
+=======
+
+Scenario: Test Traing Types
+>>>>>>> auto_generate
   #enter steps(s) to begin process
-  When I am on the forms page
-  And I follow "New Form"
+  When I am on the home page
+  Then I should see "Training Types"
+  And I should see "STC"
   #Can we test the route here?
-  Then I must be on the page with the title: "Generate STC Sign In Sheet" 
+  
+Scenario: Test Sign in
+  When I am on the home page
+  And I follow "STC"
+  Then I should see "Generate Forms For: STC"
+  And I should see "Generate Sign-in Sheet"
+  
+Scenario: Test data entry
+  When I am on the home page
+  When I follow "STC"
+  And I follow "Generate Sign-in Sheet"
   #enter step(s) to check if the correct input fields are available
-  Then I should see "STC Field Representative"
+  Then I should see "Field Representative"
   And I should see "Certification Number"
   #Then the "form_certification_number" field should contain "^$"
   And I should see "Start Date"
@@ -27,6 +43,7 @@ Scenario: Generate sign in forms
   And I should see "Course Title"
   And I should see "Total Participants"
   
+<<<<<<< HEAD
 #Scenario: Selecting from the Dropdown
   When I select "Girls Circle Facilitator Training" from "Course Title"
   When I select "Girls Circle Facilitator Training" from "Course Title"
@@ -45,3 +62,48 @@ Scenario: Generating Form
   When I press "Generate"
   Then I should get a download with the filename "STC_Sign_In_Sheet.docx"
   
+=======
+Scenario: Generate Form
+  When I am on the home page
+  When I follow "STC"
+  When I follow "Generate Sign-in Sheet"
+  And I upload a valid file
+  Then I should get a download with the filename "dummy.docx"
+  
+Scenario: Test Back Button for Training
+  When I am on the home page
+  And I follow "STC"
+  And I follow "Back"
+  Then I should see "Training Type"
+  
+Scenario: Test Back Button For STC
+  When I am on the home page
+  And I follow "STC"
+  And I follow "Generate Sign-in Sheet"
+  And I follow "Back"
+  Then I should see "Generate Forms For: STC"
+
+
+ 
+#Scenario: Selecting from the Dropdown
+  # When I select "Girls Circle Facilitator Training" from "Course Title"
+  # When I select "Girls Circle Facilitator Training" from "Course Title"
+
+
+# Scenario: Valid File 
+#   Given PENDING:
+#   #When I press "Choose File"
+#   Then I upload a valid file
+#   Then I should receive a valid file
+
+# Scenario: Invalid File
+#   Given PENDING
+#   #When I press "Choose File"
+#   Then I upload an invalid file
+#   Then I should receive an invalid file
+
+# Scenario: Generating Form  
+#   Given  PENDING
+#   When I press "Generate"
+#   Then I should get a download with the filename "STC_Sign_In_Sheet.docx"
+>>>>>>> auto_generate

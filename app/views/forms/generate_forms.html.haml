@@ -1,0 +1,11 @@
+%h1 Generate Forms For: #{@type}
+%title Generate Forms For: #{@type}
+
+
+= link_to 'Generate Sign-in Sheet', new_form_path(:type => @type, :sheet => 'Sign_in')
+%br
+%br
+= link_to "Generate Course Evaluation", new_form_path(:type => @type, :sheet =>'Course Evaluation')
+%br
+%br
+= link_to "Back", trainingtype_path

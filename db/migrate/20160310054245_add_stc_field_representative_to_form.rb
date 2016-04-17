@@ -1,5 +1,5 @@
 class AddStcFieldRepresentativeToForm < ActiveRecord::Migration
   def change
-    add_column :forms, :stc_field_representative, :string
+    add_column :forms, :stcOfield_representative, :string
   end
 end

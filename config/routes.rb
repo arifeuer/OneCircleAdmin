@@ -2,9 +2,12 @@ Rails.application.routes.draw do
   devise_for :users
   resources :forms
   mount JasmineRails::Engine => '/specs' if defined?(JasmineRails)
-  root 'forms#new'
+  root 'forms#trainingtype'
   
+  get '/generate_forms', to: 'forms#generate_forms'
+  get '/trainingtype', to: "forms#trainingtype"
   
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

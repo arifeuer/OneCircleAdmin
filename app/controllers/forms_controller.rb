@@ -18,7 +18,15 @@ class FormsController < ApplicationController
 
   # GET /forms/new
   def new
+    @type = params[:type]
+    @sheet = params[:sheet]
     #default new view
+  end
+
+  # GET /forms/new_stc_forms_path
+  def generate_forms
+    @type = params[:type]
+    # @type = "STC"
   end
 
   # GET /forms/1/edit
@@ -29,6 +37,7 @@ class FormsController < ApplicationController
   # POST /forms.json
   def create
     @form = Form.create!(form_params)
+
  
     form_replace
     
@@ -64,7 +73,11 @@ class FormsController < ApplicationController
     #Using docx_replace gem
     #https://github.com/adamalbrecht/docx_replace
     
+<<<<<<< HEAD
     doc = DocxReplace::Doc.new("#{Rails.root}/lib/form_templates/STC_Sign_In_Template_Public.docx", "#{Rails.root}/tmp")
+=======
+    doc = DocxReplace::Doc.new("#{Rails.root}/lib/form_templates/TEMPLATE DUMMY 1.docx", "#{Rails.root}/tmp")
+>>>>>>> auto_generate
 
     # Replace some variables. $var$ convention is used here, but not required.
     doc.replace("FIELD_REP", @form.stc_field_representative)
@@ -81,7 +94,11 @@ class FormsController < ApplicationController
     doc.commit(tmp_file.path)
 
     # Respond to the request by sending the temp file
-    send_file tmp_file.path, filename: "STC_Sign_In_Sheet.docx", disposition: 'attachment'
+    send_file tmp_file.path, filename: "dummy.docx", disposition: 'attachment'
+    
+    #flash[:notice] = "File Downloaded"
+    
+    #redirect_to new_form_path
   end
 
   private

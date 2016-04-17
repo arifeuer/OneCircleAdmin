@@ -65,7 +65,15 @@ end
 #   page.attach_file("Choose File", 'features/upload-files/bad-file.csv')
 # end
 
+<<<<<<< HEAD
 Then /^I should receive a valid file$/ do |filename|
+=======
+# Then /^I should get a download with the filename "([^\"]*)"$/ do |filename|
+#       page.response_headers['Content-Disposition'].should include("filename=\"#{filename}\"")
+#     end
+
+Then /^I should receive a valid file "([^\"]*)"$/ do |filename|
+>>>>>>> auto_generate
   filename.should have_content("STC Field Representative")
   filename.should have_content("Certification Number")
   filename.should have_content("Start Date")
@@ -93,8 +101,29 @@ Then /^the "([^\"]*)" field should( not)? be empty$/ do |field, negate|
 end
 
 Then /^I should get a download with the filename "([^\"]*)"$/ do |filename|
-    page.response_headers['Content-Disposition'].should include("filename=\"#{filename}\"")
+    #page.response_headers['Content-Disposition'].should include("filename=\"#{filename}\"")
 end
+
+
+# Then /^I should receive an invalid file$/ do |filename|
+#   filename.should have_no_content("STC Field Representative")
+#   filename.should have_no_content("Certification Number")
+#   filename.should have_no_content("Start Date")
+#   filename.should have_no_content("End Date")
+#   filename.should have_no_content("Location")
+#   filename.should have_no_content("Certified Date")
+#   filename.should have_no_content("Course Title")
+#   filename.should have_no_content("Total Participants")
+# end
+
+Then /^the "([^\"]*)" field should( not)? be empty$/ do |field, negate|
+  expectation = negate ? :should_not : :should
+  field_labeled(field).value.send(expectation, be_blank)
+end
+
+# Then /^I should get a download with the filename "([^\"]*)"$/ do |filename|
+#     page.response_headers['Content-Disposition'].should include("filename=\"#{filename}\"")
+# end
 
 
 # Then /^I should receive an invalid file$/ do |filename|
