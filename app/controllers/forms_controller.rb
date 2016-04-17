@@ -1,8 +1,8 @@
 class FormsController < ApplicationController
-  before_filter :authenticate_user!
-  before_filter do 
-    redirect_to new_user_registration_path unless current_user && current_user.admin
-  end
+  # before_filter :authenticate_user!
+  # before_filter do 
+  #   redirect_to new_user_registration_path unless current_user && current_user.admin
+  # end
   before_action :set_form, only: [:show, :edit, :update, :destroy]
     
   # GET /forms
@@ -72,13 +72,8 @@ class FormsController < ApplicationController
   def form_replace
     #Using docx_replace gem
     #https://github.com/adamalbrecht/docx_replace
-    
-<<<<<<< HEAD
-    doc = DocxReplace::Doc.new("#{Rails.root}/lib/form_templates/STC_Sign_In_Template_Public.docx", "#{Rails.root}/tmp")
-=======
-    doc = DocxReplace::Doc.new("#{Rails.root}/lib/form_templates/TEMPLATE DUMMY 1.docx", "#{Rails.root}/tmp")
->>>>>>> auto_generate
 
+    doc = DocxReplace::Doc.new("#{Rails.root}/lib/form_templates/TEMPLATE DUMMY 1.docx", "#{Rails.root}/tmp")
     # Replace some variables. $var$ convention is used here, but not required.
     doc.replace("FIELD_REP", @form.stc_field_representative)
     doc.replace("CERT_NUMBER", @form.certification_number)

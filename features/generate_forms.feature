@@ -10,12 +10,8 @@ Background: training in database
   # a list of trainings on the home page. Insteaf we are creating a new training by completing the form -Kishan
 
 
-<<<<<<< HEAD
-Scenario: Generate sign in forms
-=======
 
 Scenario: Test Traing Types
->>>>>>> auto_generate
   #enter steps(s) to begin process
   When I am on the home page
   Then I should see "Training Types"
@@ -43,26 +39,6 @@ Scenario: Test data entry
   And I should see "Course Title"
   And I should see "Total Participants"
   
-<<<<<<< HEAD
-#Scenario: Selecting from the Dropdown
-  When I select "Girls Circle Facilitator Training" from "Course Title"
-  When I select "Girls Circle Facilitator Training" from "Course Title"
-  
-Scenario: Valid File  
-  #When I press "Choose File"
-  Then I upload a valid file
-  Then I should receive a valid file
-
-Scenario: Invalid File
-  When I press "Choose File"
-  Then I upload an invalid file
-  Then I should receive an invalid file
-
-Scenario: Generating Form  
-  When I press "Generate"
-  Then I should get a download with the filename "STC_Sign_In_Sheet.docx"
-  
-=======
 Scenario: Generate Form
   When I am on the home page
   When I follow "STC"
@@ -84,26 +60,3 @@ Scenario: Test Back Button For STC
   Then I should see "Generate Forms For: STC"
 
 
- 
-#Scenario: Selecting from the Dropdown
-  # When I select "Girls Circle Facilitator Training" from "Course Title"
-  # When I select "Girls Circle Facilitator Training" from "Course Title"
-
-
-# Scenario: Valid File 
-#   Given PENDING:
-#   #When I press "Choose File"
-#   Then I upload a valid file
-#   Then I should receive a valid file
-
-# Scenario: Invalid File
-#   Given PENDING
-#   #When I press "Choose File"
-#   Then I upload an invalid file
-#   Then I should receive an invalid file
-
-# Scenario: Generating Form  
-#   Given  PENDING
-#   When I press "Generate"
-#   Then I should get a download with the filename "STC_Sign_In_Sheet.docx"
->>>>>>> auto_generate
