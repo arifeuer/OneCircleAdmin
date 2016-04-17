@@ -1,6 +1,8 @@
 %h1 Generate #{@type} #{@sheet}
 %title Generate #{@type} #{@sheet}
 
+
+
 = form_tag forms_path, :multipart=>true do
 
   = label :form, :stc_field_representative, 'Field Representative'
@@ -27,7 +29,7 @@
   = label :form, :total_participants, 'Total Participants'
   = text_field :form, 'total_participants'
   
-  = file_field_tag :file
+  = file_field_tag "Choose File"
 
   = submit_tag 'Generate'
   
