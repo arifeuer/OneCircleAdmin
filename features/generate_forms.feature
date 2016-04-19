@@ -44,7 +44,8 @@ Scenario: Generate Form
   When I follow "STC"
   When I follow "Generate Sign-in Sheet"
   And I upload a valid file
-  Then I should get a download with the filename "dummy.docx"
+  And I press "Generate"
+  Then I should get a download with the filename "STC_Sign_In_Sheet.docx"
   
 Scenario: Test Back Button for Training
   When I am on the home page

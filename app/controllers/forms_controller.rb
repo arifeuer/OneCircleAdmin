@@ -41,7 +41,7 @@ class FormsController < ApplicationController
  
     form_replace
     
-    flash[:notice] = "#{@form.type} was successfully created."
+    #flash[:notice] = "#{@form.type} was successfully created."
     #redirect_to forms_path
   end
 
