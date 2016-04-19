@@ -7,6 +7,9 @@ Travis CI:
 Code Climate GPA: 
 [![Code Climate](https://codeclimate.com/github/arifeuer/cs169ocf.svg)](https://codeclimate.com/github/arifeuer/cs169ocf)
 
+Code Climate Coverage:
+[![Code Climate](https://codeclimate.com/github/arifeuer/cs169ocf/badges/coverage.svg)](https://codeclimate.com/github/arifeuer/cs169ocf/coverage)
+
 
 ##Links
 Heroku: https://onecircleadmin.herokuapp.com/
