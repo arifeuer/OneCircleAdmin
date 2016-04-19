@@ -7,9 +7,9 @@
 require 'cucumber/rails'
 require 'codeclimate-test-reporter'
 CodeClimate::TestReporter.start
-require 'simplecov'
+# require 'simplecov'
 
-SimpleCov.start
+# SimpleCov.start
 
 # SimpleCov.start do
 #   add_filter "/features/"
