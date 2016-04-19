@@ -48,29 +48,28 @@ class FormsController < ApplicationController
   # PATCH/PUT /forms/1
   # PATCH/PUT /forms/1.json
   def update
-    respond_to do |format|
-      if @form.update(form_params)
-        format.html { redirect_to @form, notice: 'Form was successfully updated.' }
-        format.json { render :show, status: :ok, location: @form }
-      else
-        format.html { render :edit }
-        format.json { render json: @form.errors, status: :unprocessable_entity }
-      end
-    end
+    # respond_to do |format|
+    #   if @form.update(form_params)
+    #     format.html { redirect_to @form, notice: 'Form was successfully updated.' }
+    #     format.json { render :show, status: :ok, location: @form }
+    #   else
+    #     format.html { render :edit }
+    #     format.json { render json: @form.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   # DELETE /forms/1
   # DELETE /forms/1.json
   def destroy
-    @form.destroy
-    respond_to do |format|
-      format.html { redirect_to forms_url, notice: 'Form was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    # @form.destroy
+    # respond_to do |format|
+    #   format.html { redirect_to forms_url, notice: 'Form was successfully destroyed.' }
+    #   format.json { head :no_content }
+    # end
   end
   
   def form_replace
-    
     #Using docx_replace gem
     #https://github.com/adamalbrecht/docx_replace
     
