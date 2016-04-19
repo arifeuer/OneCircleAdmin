@@ -1,8 +1,8 @@
 class FormsController < ApplicationController
-  before_filter :authenticate_user!
-  before_filter do 
-    redirect_to new_user_registration_path unless current_user && current_user.admin
-  end
+  # before_filter :authenticate_user!
+  # before_filter do 
+  #   redirect_to new_user_registration_path unless current_user && current_user.admin
+  # end
   before_action :set_form, only: [:show, :edit, :update, :destroy]
     
   # GET /forms
@@ -18,7 +18,15 @@ class FormsController < ApplicationController
 
   # GET /forms/new
   def new
+    @type = params[:type]
+    @sheet = params[:sheet]
     #default new view
+  end
+
+  # GET /forms/new_stc_forms_path
+  def generate_forms
+    @type = params[:type]
+    # @type = "STC"
   end
 
   # GET /forms/1/edit
@@ -29,6 +37,7 @@ class FormsController < ApplicationController
   # POST /forms.json
   def create
     @form = Form.create!(form_params)
+
  
     form_replace
     
@@ -64,7 +73,7 @@ class FormsController < ApplicationController
     #Using docx_replace gem
     #https://github.com/adamalbrecht/docx_replace
     
-    doc = DocxReplace::Doc.new("#{Rails.root}/lib/form_templates/STC_Sign_In_Template.docx", "#{Rails.root}/tmp")
+    doc = DocxReplace::Doc.new("#{Rails.root}/lib/form_templates/STC_Sign_In_Template_Public.docx", "#{Rails.root}/tmp")
 
     # Replace some variables. $var$ convention is used here, but not required.
     doc.replace("FIELD_REP", @form.stc_field_representative)
@@ -81,6 +90,10 @@ class FormsController < ApplicationController
     doc.commit(tmp_file.path)
 
     # Respond to the request by sending the temp file
+
+    #flash[:notice] = "File Downloaded"
+    
+    #redirect_to new_form_path
     send_file tmp_file.path, filename: "STC_Sign_In_Sheet.docx", disposition: 'attachment'
   end
 

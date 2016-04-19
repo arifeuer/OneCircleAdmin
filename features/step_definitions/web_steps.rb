@@ -40,32 +40,26 @@ end
 #   click_button "Send file"
 # end
 
-# When(/^I upload a valid file$/) do
-#   page.execute_script("document.getElementsByName('file')[0].style.opacity = 1")
-#   page.attach_file("Choose File", 'features/upload-files/good-file.csv')
-# end
-
-# When(/^I upload an invalid file$/) do
-#   page.attach_file("Choose File", 'features/upload-files/bad-file.csv')
-# end
+When(/^I upload a valid file$/) do
+  page.attach_file("Choose File", 'features/upload-files/good-file.csv')
+end
 
 
+When(/^I upload an invalid file$/) do
+  page.attach_file("Choose File", 'features/upload-files/bad-file.csv')
+end
 
 # When /^I upload an invalid file$/ do
 #   attach_file(:csv_file, File.join(RAILS_ROOT, 'features', 'upload-files', 'bad-file.csv'))
 #   click_button "Send file"
 # end
 
-When(/^I upload a valid file$/) do
-  #page.execute_script("document.getElementsByName('file')[0].style.opacity = 1")
-  page.attach_file("Choose File", 'features/upload-files/good-file.csv')
-end
+# Then /^I should get a download with the filename "([^\"]*)"$/ do |filename|
+#       page.response_headers['Content-Disposition'].should include("filename=\"#{filename}\"")
+#     end
 
-When(/^I upload an invalid file$/) do
-  page.attach_file("Choose File", 'features/upload-files/bad-file.csv')
-end
 
-Then /^I should receive a valid file$/ do |filename|
+Then /^I should receive a valid file "([^\"]*)"$/ do |filename|
   filename.should have_content("STC Field Representative")
   filename.should have_content("Certification Number")
   filename.should have_content("Start Date")
@@ -87,7 +81,7 @@ Then /^I should receive an invalid file$/ do |filename|
   filename.should have_no_content("Total Participants")
 end
 
-Then /^the "([^"]*)" field should( not)? be empty$/ do |field, negate|
+Then /^the "([^\"]*)" field should( not)? be empty$/ do |field, negate|
   expectation = negate ? :should_not : :should
   field_labeled(field).value.send(expectation, be_blank)
 end
@@ -96,42 +90,43 @@ Then /^I should get a download with the filename "([^\"]*)"$/ do |filename|
     page.response_headers['Content-Disposition'].should include("filename=\"#{filename}\"")
 end
 
-Then /^the "([^"]*)" field should( not)? be empty$/ do |field, negate|
+# Then /^I should receive an invalid file$/ do |filename|
+#   filename.should have_no_content("STC Field Representative")
+#   filename.should have_no_content("Certification Number")
+#   filename.should have_no_content("Start Date")
+#   filename.should have_no_content("End Date")
+#   filename.should have_no_content("Location")
+#   filename.should have_no_content("Certified Date")
+#   filename.should have_no_content("Course Title")
+#   filename.should have_no_content("Total Participants")
+# end
+
+Then /^the "([^\"]*)" field should( not)? be empty$/ do |field, negate|
   expectation = negate ? :should_not : :should
   field_labeled(field).value.send(expectation, be_blank)
 end
 
+# Then /^I should get a download with the filename "([^\"]*)"$/ do |filename|
+#     page.response_headers['Content-Disposition'].should include("filename=\"#{filename}\"")
+# end
 
 Given /^PENDING/ do
   pending
 end
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-When /^(?:|I )press "([^"]*)"$/ do |button|
+When /^(?:|I )press "([^\"]*)"$/ do |button|
   click_button(button)
 end
 
-When /^(?:|I )follow "([^"]*)"$/ do |link|
+When /^(?:|I )follow "([^\"]*)"$/ do |link|
   click_link(link)
 end
 
-When /^(?:|I )fill in "([^"]*)" with "([^"]*)"$/ do |field, value|
+When /^(?:|I )fill in "([^\"]*)" with "([^\"]*)"$/ do |field, value|
   fill_in(field, :with => value)
 end
 
-When /^(?:|I )fill in "([^"]*)" for "([^"]*)"$/ do |value, field|
+When /^(?:|I )fill in "([^\"]*)" for "([^\"]*)"$/ do |value, field|
   fill_in(field, :with => value)
 end
 
@@ -156,25 +151,25 @@ When /^(?:|I )select "([^"]*)" from "([^"]*)"$/ do |value, field|
   select(value, :from => field)
 end
 
-When /^(?:|I )check "([^"]*)"$/ do |field|
+When /^(?:|I )check "([^\"]*)"$/ do |field|
   check(field)
 end
 
-When /^(?:|I )uncheck "([^"]*)"$/ do |field|
+When /^(?:|I )uncheck "([^\"]*)"$/ do |field|
   uncheck(field)
 end
 
-When /^(?:|I )choose "([^"]*)"$/ do |field|
+When /^(?:|I )choose "([^\"]*)"$/ do |field|
   choose(field)
 end
 
-When /^(?:|I )attach the file "([^"]*)" to "([^"]*)"$/ do |path, field|
+When /^(?:|I )attach the file "([^\"]*)" to "([^\"]*)"$/ do |path, field|
   attach_file(field, File.expand_path(path))
 end
 
 
 
-Then /^(?:|I )should see "([^"]*)"$/ do |text|
+Then /^(?:|I )should see "([^\"]*)"$/ do |text|
   if page.respond_to? :should
     page.should have_content(text)
   else
@@ -182,7 +177,7 @@ Then /^(?:|I )should see "([^"]*)"$/ do |text|
   end
 end
 
-Then /^(?:|I )should not see "([^"]*)"$/ do |text|
+Then /^(?:|I )should not see "([^\"]*)"$/ do |text|
   if page.respond_to? :should
     page.should have_no_content(text)
   else
@@ -190,7 +185,7 @@ Then /^(?:|I )should not see "([^"]*)"$/ do |text|
   end
 end
 
-Then(/^I must be on the page with the title: "([^"]*)"$/) do |page_title|
+Then(/^I must be on the page with the title: "([^\"]*)"$/) do |page_title|
     page.should have_css('title', :text => page_title)
 end
 
@@ -203,7 +198,7 @@ Then /^(?:|I )should not see \/([^\/]*)\/$/ do |regexp|
   end
 end
 
-Then /^the "([^"]*)" field(?: within (.*))? should contain "([^"]*)"$/ do |field, parent, value|
+Then /^the "([^\"]*)" field(?: within (.*))? should contain "([^\"]*)"$/ do |field, parent, value|
   with_scope(parent) do
     field = find_field(field)
     field_value = (field.tag_name == 'textarea') ? field.text : field.value
@@ -215,7 +210,7 @@ Then /^the "([^"]*)" field(?: within (.*))? should contain "([^"]*)"$/ do |field
   end
 end
 
-Then /^the "([^"]*)" field(?: within (.*))? should not contain "([^"]*)"$/ do |field, parent, value|
+Then /^the "([^\"]*)" field(?: within (.*))? should not contain "([^\"]*)"$/ do |field, parent, value|
   with_scope(parent) do
     field = find_field(field)
     field_value = (field.tag_name == 'textarea') ? field.text : field.value
@@ -227,7 +222,7 @@ Then /^the "([^"]*)" field(?: within (.*))? should not contain "([^"]*)"$/ do |f
   end
 end
 
-Then /^the "([^"]*)" field should have the error "([^"]*)"$/ do |field, error_message|
+Then /^the "([^\"]*)" field should have the error "([^\"]*)"$/ do |field, error_message|
   element = find_field(field)
   classes = element.find(:xpath, '..')[:class].split(' ')
 
@@ -258,7 +253,7 @@ Then /^the "([^"]*)" field should have the error "([^"]*)"$/ do |field, error_me
   end
 end
 
-Then /^the "([^"]*)" field should have no error$/ do |field|
+Then /^the "([^\"]*)" field should have no error$/ do |field|
   element = find_field(field)
   classes = element.find(:xpath, '..')[:class].split(' ')
   if classes.respond_to? :should
@@ -270,7 +265,7 @@ Then /^the "([^"]*)" field should have no error$/ do |field|
   end
 end
 
-Then /^the "([^"]*)" checkbox(?: within (.*))? should be checked$/ do |label, parent|
+Then /^the "([^\"]*)" checkbox(?: within (.*))? should be checked$/ do |label, parent|
   with_scope(parent) do
     field_checked = find_field(label)['checked']
     if field_checked.respond_to? :should
@@ -281,7 +276,7 @@ Then /^the "([^"]*)" checkbox(?: within (.*))? should be checked$/ do |label, pa
   end
 end
 
-Then /^the "([^"]*)" checkbox(?: within (.*))? should not be checked$/ do |label, parent|
+Then /^the "([^\"]*)" checkbox(?: within (.*))? should not be checked$/ do |label, parent|
   with_scope(parent) do
     field_checked = find_field(label)['checked']
     if field_checked.respond_to? :should
