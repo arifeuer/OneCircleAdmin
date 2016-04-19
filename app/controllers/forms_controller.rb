@@ -70,6 +70,7 @@ class FormsController < ApplicationController
   end
   
   def form_replace
+    
     #Using docx_replace gem
     #https://github.com/adamalbrecht/docx_replace
     
