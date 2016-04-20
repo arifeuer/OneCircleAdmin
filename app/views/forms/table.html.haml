@@ -2,29 +2,37 @@
 %title Training Table
 
 <head>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<!-- Latest compiled and minified JavaScript -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+// <script type="text/javascript" src="filter"></script>
 </head>
 <body>
 
 <div class="container">
-<table border="3">
+<table class="table table-striped table-hover table-condensed">
 <thead>
-<tr bgcolor="#d6d6d6">
-<th>Training Type</th>
-<th>Certification Number</th>
+<div class="input-group"> <span class="input-group-addon">Filter</span>
+<input id="filter" type="text" class="form-control" placeholder="Type here...">
+</div>
+<tr bgcolor="#b4ffc0">
+<th class="filterable-cell">Training Type</th>
+<th>Certification</th>
 <th>Start Date</th>
 <th>End Date</th>
-<th>Training Location</th>
+<th>Location</th>
 <th>Trainer</th>
 <th>Forms</th>
 </tr>
 </thead>
-<tbody>
-<tr bgcolor="#ffccc3">
+<tbody class="searchable">
+<tr>
 <td>The Council Facilitator Training</td>
 <td>2137-033905</td>
 <td>March 10, 2016</td>
@@ -33,7 +41,7 @@
 <td>Sally Field</td>
 <td><a href="forms/new">Generate 1</a></td>
 </tr>
-<tr bgcolor="#94dcff">
+<tr>
 <td>Girls Circle Facilitator Training</td>
 <td>9438-162503</td>
 <td>July 18, 2016</td>
@@ -42,9 +50,9 @@
 <td>Marie Curie</td>
 <td><a href="forms/new">Generate 2</a></td>
 </tr>
-<tr bgcolor="#b4ffc0">
+<tr>
 <td>The Council Facilitator Training</td>
-<td>8212-220391</td>
+<td>8212-22039</td>
 <td>November 30, 2016</td>
 <td>December 2, 2016</td>
 <td>Dallas</td>
@@ -54,5 +62,18 @@
 </tbody>
 </table>
 </div>
-
 </body>
+
+<script>
+$(document).ready(function () {
+(function ($) {
+$('#filter').keyup(function () {
+var rex = new RegExp($(this).val(), 'i');
+$('.searchable tr').hide();
+$('.searchable tr').filter(function () {
+return rex.test($(this).text());
+}).show();
+})
+}(jQuery));
+});
+</script>
