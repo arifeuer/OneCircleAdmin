@@ -14,8 +14,8 @@
 # Trainings.create!([{training_title: 'Mission Hill Community Center'}, {training_type: 'MODA Training'}, {location: 'Honolulu, HI 96811'},  {certification_number: 'aaaaaa'}, {course_start_date: '2006-04-19 00:00:00'}, {course_end_date: '2006-04-20 00:00:00'}])
 
 
-trainings = [{:training_title => 'Springfield Public Schools', :training_type => 'Initial Training', :location => 'San Rafael, CA 94901',  :certification_number => 'aaaaaa', :course_start_date => '2006-04-06 00:00:00', :course_end_date => '2006-04-07 00:00:00' },
-            {:training_title => 'Alex Schools', :training_type => 'Boys to Men', :location => 'San Francisco, CA 94901',  :certification_number => 'bbbbbb', :course_start_date => '2006-04-06 00:00:00', :course_end_date => '2006-04-07 00:00:00' }, 
+trainings = [{:training_title => 'Springfield Public Schools', :training_type => 'Initial Training', :trainer => 'Alex Sung',  :location => 'San Rafael, CA 94901',  :certification_number => 'aaaaaa', :course_start_date => '2006-04-06 00:00:00', :course_end_date => '2006-04-07 00:00:00' },
+            {:training_title => 'Alex Schools', :training_type => 'Boys to Men',:trainer => 'Jay Iyer', :location => 'San Francisco, CA 94901',  :certification_number => 'bbbbbb', :course_start_date => '2006-04-06 00:00:00', :course_end_date => '2006-04-07 00:00:00' }, 
             ] 
             
 trainings.each do |training|
