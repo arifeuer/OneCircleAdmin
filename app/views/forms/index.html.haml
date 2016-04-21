@@ -1,17 +1,43 @@
-%p#notice= notice
-%h1 Listing Forms
-%table
-  %thead
-    %tr
-      %th Type
-      %th{:colspan => "3"}
-  %tbody
-    - @forms.each do |form|
-      %tr
-        %td= form.type
-        %td= link_to 'Show', form
-        %td= link_to 'Edit', edit_form_path(form)
-        %td= link_to 'Destroy', form, method: :delete, data: { confirm: 'Are you sure?' }
-%br/
-= link_to 'New Form', new_form_path
+// %p#notice= notice
+// %h1 Listing Forms
+// %table
+//   %thead
+//     %tr
+//       %th Type
+//       %th{:colspan => "3"}
+//   %tbody
+//     - @forms.each do |form|
+//       %tr
+//         %td= form.type
+//         %td= link_to 'Show', form
+//         %td= link_to 'Edit', edit_form_path(form)
+//         %td= link_to 'Destroy', form, method: :delete, data: { confirm: 'Are you sure?' }
+// %br/
+// = link_to 'New Form', new_form_path
 
+
+%h1 Trainings
+
+%table#trainings
+ %thead
+   %tr
+     %th Training Title
+     %th Training Type
+     %th Trainer
+     %th Location
+     %th Certification Number
+     %th Start Date
+     %th End Date
+     
+    
+ %tbody
+   - @trainings.each do |training|
+     %tr
+       %td= training.training_title
+       %td= training.training_type
+       %td= training.location
+       %td= training.certification_number
+       %td= training.course_start_date
+       %td= training.course_end_date
+       %td= link_to "Generate", new_form_path, :method => :show
+=link_to 'Add new movie', new_movie_path
