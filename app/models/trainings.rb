@@ -1,2 +1,2 @@
-class Training < ActiveRecord::Base
+class Trainings < ActiveRecord::Base
 end

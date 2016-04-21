@@ -9,6 +9,7 @@ class FormsController < ApplicationController
   # GET /forms.json
   def index
     @forms = Form.all
+    @trainings = Trainings.all
   end
 
   # GET /forms/1
