@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 20160415091302) do
   create_table "trainings", force: :cascade do |t|
     t.string "training_title"
     t.string "training_type"
+    t.string "trainer"
     t.string "location"
     t.string "certification_number"
     t.string "course_start_date"
