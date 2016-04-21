@@ -24,6 +24,16 @@ Scenario: Test Sign in
   Then I should see "Generate Forms For: STC"
   And I should see "Generate Sign-in Sheet"
   
+Scenario: Test different types (NASW)
+  When I am on the home page
+  And I follow "NASW"
+  Then I should see "Generate Forms For: NASW"
+  
+Scenario: Test different types (CE)
+  When I am on the home page
+  And I follow "CE"
+  Then I should see "Generate Forms For: CE"
+  
 Scenario: Test data entry
   When I am on the home page
   When I follow "STC"
