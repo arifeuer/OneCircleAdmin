@@ -28,14 +28,17 @@ class TrainingsController < ApplicationController
     elsif @type == "CE"
       @partial_type = "ce_partial"
     else
-      @partial_type = "stc_partial"
+      @partial_type = "other_partial"
     end
     # @type = "STC"
   end
   
-   def create
-    @form = Form.create!(form_params)
-
+  def create
+    #@form = Form.create!(form_params)
+    id = params[:id]
+    @training = Trainings.find(id)
+    @type = params[:type]
+    @sheet = params[:commit]
  
     form_replace
     
@@ -47,17 +50,17 @@ class TrainingsController < ApplicationController
     #Using docx_replace gem
     #https://github.com/adamalbrecht/docx_replace
     
-    doc = DocxReplace::Doc.new("#{Rails.root}/lib/form_templates/STC_Sign_In_Template_Public.docx", "#{Rails.root}/tmp")
+    doc = DocxReplace::Doc.new("#{Rails.root}/lib/form_templates/TEMPLATE_DUMMY_1.docx", "#{Rails.root}/tmp")
 
     # Replace some variables. $var$ convention is used here, but not required.
-    doc.replace("FIELD_REP", @form.stc_field_representative)
-    doc.replace("CERT_NUMBER", @form.certification_number)
-    doc.replace("START_DATE", @form.start_date)
-    doc.replace("END_DATE", @form.end_date)
-    doc.replace("LOCATION_TO_EDIT", @form.location)
-    doc.replace("CERTIFIED_DATE", @form.certified_date)
-    doc.replace("TITLE_COURSE", @form.course_title)
-    doc.replace("TOTAL_PART", @form.total_participants)
+    doc.replace("FIELD_REP", @training.trainer)
+    doc.replace("CERT_NUMBER", @training.certification_number)
+    doc.replace("START_DATE", @training.course_start_date)
+    doc.replace("END_DATE", @training.course_end_date)
+    doc.replace("LOCATION_TO_EDIT", @training.location)
+    #doc.replace("CERTIFIED_DATE", @training.certified_date)
+    doc.replace("TITLE_COURSE", @training.training_title)
+    #doc.replace("TOTAL_PART", @training.total_participants)
 
     # Write the document back to a temporary file
     tmp_file = Tempfile.new('word_template', "#{Rails.root}/tmp")
@@ -68,8 +71,9 @@ class TrainingsController < ApplicationController
     #flash[:notice] = "File Downloaded"
     
     #redirect_to new_form_path
-    send_file tmp_file.path, filename: "STC_Sign_In_Sheet.docx", disposition: 'attachment'
+    send_file tmp_file.path, filename: @type+"_"+@sheet+"_Sheet.docx", disposition: 'attachment'
   end
+
   
 
   # GET /trainings/1

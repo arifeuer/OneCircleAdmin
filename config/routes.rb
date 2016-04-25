@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get 'training/generate_forms', to: 'trainings#generate_forms'
   get '/trainingstype', to: "trainings#trainingtype"
   get '/trainingsindex', to: 'trainings#index'
+  get '/custom_training', to: "trainings#custom"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes"

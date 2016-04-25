@@ -1,15 +1,7 @@
-%h1 Generate #{@type} #{@sheet}
-%title Generate #{@type} #{@sheet}
+%h1 Generate Custom
+%title Generate Custom
 
-#{@training.training_title}
-#{@training.training_type}
-#{@training.trainer}
-#{@training.location}
-#{@training.certification_number}
-#{@training.course_start_date}
-#{@training.course_end_date}
-
-= form_tag forms_path, :multipart=>true do
+= form_tag custom_training_path, :multipart=>true do
 
   = label :form, :stc_field_representative, 'Field Representative'
   = text_field :form, 'stc_field_representative'
@@ -42,5 +34,5 @@
   
 %br
 %br
-= link_to "Back", training_generate_forms_path(:type => @type)
+= link_to "Back", training_generate_forms_path(:type => @type, :id => @id)
 

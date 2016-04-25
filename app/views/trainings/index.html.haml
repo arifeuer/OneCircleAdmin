@@ -17,6 +17,9 @@
 
 %h1 Trainings Table
 
+
+// %br%br to do later: custom forms
+
 %table#trainings
     %thead
         %tr
@@ -37,4 +40,5 @@
                 %td= training.certification_number
                 %td= training.course_start_date
                 %td= training.course_end_date
-                %td= link_to "Generate", training_generate_forms_path(:type => "STC", :id => training)
+                %td= link_to "Generate", training_generate_forms_path(:type => training.training_type, :id => training)
+

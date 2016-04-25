@@ -1,3 +1,6 @@
-= link_to 'Generate Sign-in Sheet', new_training_path(:type => @type, :sheet => 'Sign_in', :id => @id)
-%br
-%br
+//= link_to 'Generate Sign-in Sheet', new_training_path(:type => @type, :sheet => 'Sign_in', :id => @id)
+= form_tag trainings_path(:id => @id, :type => @type) do
+    = submit_tag 'Generate Sign-in Sheet', value: "Sign_In"
+    %br
+    %br
+
