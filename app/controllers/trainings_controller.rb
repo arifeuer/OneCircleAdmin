@@ -10,10 +10,10 @@ class TrainingsController < ApplicationController
   end
   
   def new
-    @type = params[:type]
-    @sheet = params[:sheet]
-    @id = params[:id]
-    @training = Trainings.find(@id)
+    # @type = params[:type]
+    # @sheet = params[:sheet]
+    # @id = params[:id]
+    # @training = Trainings.find(@id)
     #default new view
   end
   
