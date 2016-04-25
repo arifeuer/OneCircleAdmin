@@ -1,0 +1,46 @@
+%h1 Generate #{@type} #{@sheet}
+%title Generate #{@type} #{@sheet}
+
+#{@training.training_title}
+#{@training.training_type}
+#{@training.trainer}
+#{@training.location}
+#{@training.certification_number}
+#{@training.course_start_date}
+#{@training.course_end_date}
+
+= form_tag forms_path, :multipart=>true do
+
+  = label :form, :stc_field_representative, 'Field Representative'
+  = text_field :form, 'stc_field_representative'
+  
+  = label :form, :certification_number, 'Certification Number'
+  = text_field :form, 'certification_number'
+  
+  = label :form, :start_date, 'Start Date'
+  = text_field :form, 'start_date'
+  
+  = label :form, :end_date, 'End Date'
+  = text_field :form, 'end_date'
+  
+  = label :form, :location, 'Location'
+  = text_field :form, 'location'
+  
+  = label :form, :certified_date, 'Certified Date'
+  = text_field :form, 'certified_date'
+  
+  = label :form, :course_title, 'Course Title'
+  = text_field :form, 'course_title'
+  
+  = label :form, :total_participants, 'Total Participants'
+  = text_field :form, 'total_participants'
+
+  = file_field_tag :file
+
+  = submit_tag 'Generate'
+
+  
+%br
+%br
+= link_to "Back", training_generate_forms_path(:type => @type)
+

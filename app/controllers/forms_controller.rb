@@ -27,12 +27,15 @@ class FormsController < ApplicationController
   # GET /forms/new_stc_forms_path
   def generate_forms
     @type = params[:type]
+    @training = params[:training]
     if @type == "STC"
       @partial_type = "stc_partial"
     elsif @type == "NASW"
       @partial_type = "nasw_partial"
     elsif @type == "CE"
       @partial_type = "ce_partial"
+    else
+      @partial_type = "stc_partial"
     end
     # @type = "STC"
   end

@@ -37,4 +37,4 @@
                 %td= training.certification_number
                 %td= training.course_start_date
                 %td= training.course_end_date
-                %td= link_to "Generate", generate_forms_path(:type => "STC", :id => training)
+                %td= link_to "Generate", training_generate_forms_path(:type => "STC", :id => training)
