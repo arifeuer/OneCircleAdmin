@@ -29,14 +29,14 @@
 <tbody class="searchable sortable">
 - @trainings.each do |training|
   %tr
-  %td= training.training_title
-  %td= training.training_type
-  %td= training.trainer
-  %td= training.location
-  %td= training.certification_number
-  %td= training.course_start_date
-  %td= training.course_end_date
-  %td= link_to "Generate", training_generate_forms_path(:id => training, :type => training.training_type)
+    %td= training.training_title
+    %td= training.training_type
+    %td= training.trainer
+    %td= training.location
+    %td= training.certification_number
+    %td= training.course_start_date
+    %td= training.course_end_date
+    %td= link_to "Generate", training_generate_forms_path(:id => training, :type => training.training_type)
   //:method => :show
 
 </tbody>
