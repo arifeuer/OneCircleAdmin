@@ -27,6 +27,16 @@ class FormsController < ApplicationController
   # GET /forms/new_stc_forms_path
   def generate_forms
     @type = params[:type]
+    @training = params[:training]
+    if @type == "STC"
+      @partial_type = "stc_partial"
+    elsif @type == "NASW"
+      @partial_type = "nasw_partial"
+    elsif @type == "CE"
+      @partial_type = "ce_partial"
+    else
+      @partial_type = "stc_partial"
+    end
     # @type = "STC"
   end
 
@@ -42,32 +52,32 @@ class FormsController < ApplicationController
  
     form_replace
     
-    flash[:notice] = "#{@form.type} was successfully created."
+    #flash[:notice] = "#{@form.type} was successfully created."
     #redirect_to forms_path
   end
 
   # PATCH/PUT /forms/1
   # PATCH/PUT /forms/1.json
   def update
-    respond_to do |format|
-      if @form.update(form_params)
-        format.html { redirect_to @form, notice: 'Form was successfully updated.' }
-        format.json { render :show, status: :ok, location: @form }
-      else
-        format.html { render :edit }
-        format.json { render json: @form.errors, status: :unprocessable_entity }
-      end
-    end
+    # respond_to do |format|
+    #   if @form.update(form_params)
+    #     format.html { redirect_to @form, notice: 'Form was successfully updated.' }
+    #     format.json { render :show, status: :ok, location: @form }
+    #   else
+    #     format.html { render :edit }
+    #     format.json { render json: @form.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   # DELETE /forms/1
   # DELETE /forms/1.json
   def destroy
-    @form.destroy
-    respond_to do |format|
-      format.html { redirect_to forms_url, notice: 'Form was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    # @form.destroy
+    # respond_to do |format|
+    #   format.html { redirect_to forms_url, notice: 'Form was successfully destroyed.' }
+    #   format.json { head :no_content }
+    # end
   end
   
   def form_replace

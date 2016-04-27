@@ -5,6 +5,19 @@
 # files.
 
 require 'cucumber/rails'
+require 'codeclimate-test-reporter'
+CodeClimate::TestReporter.start
+# require 'simplecov'
+
+# SimpleCov.start
+
+# SimpleCov.start do
+#   add_filter "/features/"
+  # add_filter "/libexec"
+  # add_filter "/lib/hll_active_record/"
+  # add_filter "/test/"
+  # add_filter "/tmp/"
+# end
 
 # Capybara defaults to CSS3 selectors rather than XPath.
 # If you'd prefer to use XPath, just uncomment this line and adjust any

@@ -1,15 +1,16 @@
 Rails.application.routes.draw do
   #devise_for :users
   resources :forms
+  resources :trainings
   mount JasmineRails::Engine => '/specs' if defined?(JasmineRails)
-  root 'forms#index' 
-  get '/generate_forms', to: 'forms#generate_forms'
-  get '/trainingtype', to: "forms#trainingtype"
-  get '/trainingindex', to: 'trainings#index'
-  
+  root 'trainings#index' 
+  get 'training/generate_forms', to: 'trainings#generate_forms'
+  get '/trainingstype', to: "trainings#trainingtype"
+  get '/trainingsindex', to: 'trainings#index'
+  get '/custom_training', to: "trainings#custom"
 
   # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
+  # See how all your routes lay out with "rake routes"
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
