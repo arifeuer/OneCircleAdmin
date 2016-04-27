@@ -1,0 +1,23 @@
+%h1 Trainings Table
+
+%table#trainings
+    %thead
+        %tr
+            %th Training Title
+            %th Training Type
+            %th Trainer
+            %th Location
+            %th Certification Number
+            %th Start Date
+            %th End Date
+    %tbody
+        - @trainings.each do |training|
+            %tr
+                %td= training.training_title
+                %td= training.training_type
+                %td= training.location
+                %td= training.certification_number
+                %td= training.course_start_date
+                %td= training.course_end_date
+                %td= link_to "Generate", new_form_path, :method => :show
+                =link_to 'Add new movie', new_movie_path
