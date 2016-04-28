@@ -3,15 +3,7 @@ Feature: generate a table of trainings
   As an office administrator
   I want to have a table of all trainings
   So that I can generate forms from the table 
-
-    t.string "training_title"
-    t.string "training_type"
-    t.string "trainer"
-    t.string "location"
-    t.string "certification_number"
-    t.string "course_start_date"
-    t.string "course_end_date"
-
+  
 Background: training in database
   
     Given the following trainings exist:
