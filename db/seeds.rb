@@ -24,22 +24,27 @@ trainings.each do |training|
     Trainings.create!(training)
 end 
 
+
 user = User.new
-user.id = 1
-user.email = "ocfadmin@berkeley.edu"
-user.encrypted_password = "$2a$10$rYUBmWYACiFaN.jvpd6ZiuVZvGLUYQEknVahWsc9Hkj4R4jJMbTZe"
-user.reset_password_token = "41e8c7d644fdec82513e022c487d5a80bd132377341311312449ac44eb609e54"
-user.reset_password_sent_at = "2016-04-28 10:29:12"
-user.remember_created_at = nil
-user.sign_in_count = 0
-user.current_sign_in_at = nil
-user.last_sign_in_at = nil
-user.current_sign_in_ip = nil
-user.last_sign_in_ip = nil
-user.created_at =  "2016-04-15 09:04:32"
-user.updated_at = "2016-04-28 19:40:37"
-user.admin = true
+user.email = 'test@testmail.com'
+user.password = 'password'
+user.password_confirmation = 'password'
 user.save!
+
+
+# user = User.new
+# user.id = 1
+# user.reset_password_sent_at = "2016-04-28 10:29:12"
+# user.remember_created_at = nil
+# user.sign_in_count = 0
+# user.current_sign_in_at = nil
+# user.last_sign_in_at = nil
+# user.current_sign_in_ip = nil
+# user.last_sign_in_ip = nil
+# user.created_at =  "2016-04-15 09:04:32"
+# user.updated_at = "2016-04-28 19:40:37"
+# user.admin = true
+# user.save!
 
 
 
