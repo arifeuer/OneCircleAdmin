@@ -103,3 +103,13 @@ end
 Then /^I should get a download with the filename "([^\"]*)"$/ do |filename|
     page.response_headers['Content-Disposition'].should include("filename=\"#{filename}\"")
 end
+
+When /^I log in$/ do
+  fill_in "user_email", :with => "ocfadmin@berkeley.edu"
+  fill_in "user_password", :with => "administrator"
+  click_button("login")
+end
+
+When /^I logout$/ do 
+  click_button("logout")
+end

@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  #devise_for :users
+  devise_for :users, path_names: {
+    sign_up: ''
+  }
   resources :forms
   resources :trainings
   mount JasmineRails::Engine => '/specs' if defined?(JasmineRails)
@@ -8,6 +10,7 @@ Rails.application.routes.draw do
   get '/trainingstype', to: "trainings#trainingtype"
   get '/trainingsindex', to: 'trainings#index'
   get '/custom_training', to: "trainings#custom"
+  get '*path' => redirect('/')
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes"

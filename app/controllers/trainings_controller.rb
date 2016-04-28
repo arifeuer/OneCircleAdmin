@@ -1,4 +1,8 @@
 class TrainingsController < ApplicationController
+  before_filter :authenticate_user!
+  # before_filter do 
+  #   redirect_to new_user_registration_path unless current_user
+  # end
   #before_action :set_Train, only: [:show, :edit, :update, :destroy]
   skip_before_filter :set_current_user
 

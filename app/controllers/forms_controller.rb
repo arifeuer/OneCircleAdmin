@@ -1,7 +1,7 @@
 class FormsController < ApplicationController
-  # before_filter :authenticate_user!
+  before_filter :authenticate_user!
   # before_filter do 
-  #   redirect_to new_user_registration_path unless current_user && current_user.admin
+  #   redirect_to new_user_registration_path unless current_user
   # end
   before_action :set_form, only: [:show, :edit, :update, :destroy]
     
