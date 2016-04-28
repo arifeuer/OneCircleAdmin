@@ -23,6 +23,24 @@ trainings = [{:training_title => 'Springfield Public Schools', :training_type =>
 trainings.each do |training|
     Trainings.create!(training)
 end 
+
+
+
+connection = ActiveRecord::Base.connection
+
+# - IMPORTANT: SEED DATA ONLY
+# - DO NOT EXPORT TABLE STRUCTURES
+# - DO NOT EXPORT DATA FROM `schema_migrations`
+sql = File.read('db/data_records.sql')
+statements = sql.split(/;$/)
+statements.pop  # the last empty statement
+
+ActiveRecord::Base.transaction do
+	statements.each do |statement|
+	  # print(statement)
+	  connection.execute(statement)
+	end
+end
 # unless Rails.env.production?
 #   connection = ActiveRecord::Base.connection
 #   connection.tables.each do |table|
