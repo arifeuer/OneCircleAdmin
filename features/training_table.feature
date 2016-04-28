@@ -31,7 +31,6 @@ Scenario: Generate table
   And I should see "Trainer"
   #And I should see "Forms"
   And I should see "Generate"
-  And I logout
   
 Scenario: Check Training Data
   
@@ -41,7 +40,7 @@ Scenario: Check Training Data
   And I should see "Miller Public Schools"
   And I should see "Worchester Charter Schools"
   And I should see "#####INVALID#####   "
-  And I logout
+
   
 Scenario: Check STC Course_Evaluation Generate
   When I am on the home page
@@ -49,7 +48,7 @@ Scenario: Check STC Course_Evaluation Generate
   And I follow Generate on the Training with the Title "Springfield Public Schools"
   And I press "Course_Evaluation"
   Then I should get a download with the filename "STC_Course_Evaluation_Sheet.docx"
-  And I logout
+
 
 Scenario: Check NASW Sign In Generate
   When I am on the home page
@@ -57,7 +56,7 @@ Scenario: Check NASW Sign In Generate
   And I follow Generate on the Training with the Title "Miller Public Schools "
   And I press "Sign_In"
   Then I should get a download with the filename "NASW_Sign_In_Sheet.docx"
-  And I logout
+
   
 Scenario: Check CE Sign In Generate
   When I am on the home page
@@ -65,7 +64,7 @@ Scenario: Check CE Sign In Generate
   And I follow Generate on the Training with the Title "Worchester Charter Schools"
   And I press "Sign_In"
   Then I should get a download with the filename "CE_Sign_In_Sheet.docx"
-  And I logout
+
   
 Scenario: Sad Path (Invalid or ilformated Training)
   When I am on the home page
@@ -73,4 +72,3 @@ Scenario: Sad Path (Invalid or ilformated Training)
   And I follow Generate on the Training with the Title "#####INVALID#####"
   And I press "Course_Evaluation"
   Then I should get a download with the filename "????_Course_Evaluation_Sheet.docx"
-  And I logout

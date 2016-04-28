@@ -1,7 +1,7 @@
 {
   "Cucumber Features": {
     "coverage": {
-      "/home/ubuntu/workspace/cs169ocf/features/support/paths.rb": [
+      "/home/ubuntu/workspace/admin/features/support/paths.rb": [
         null,
         null,
         null,
@@ -41,7 +41,7 @@
         null,
         1
       ],
-      "/home/ubuntu/workspace/cs169ocf/features/support/selectors.rb": [
+      "/home/ubuntu/workspace/admin/features/support/selectors.rb": [
         null,
         null,
         null,
@@ -87,10 +87,10 @@
         null,
         1
       ],
-      "/home/ubuntu/workspace/cs169ocf/features/step_definitions/forms_steps.rb": [
+      "/home/ubuntu/workspace/admin/features/step_definitions/forms_steps.rb": [
 
       ],
-      "/home/ubuntu/workspace/cs169ocf/features/step_definitions/web_steps.rb": [
+      "/home/ubuntu/workspace/admin/features/step_definitions/web_steps.rb": [
         null,
         1,
         1,
@@ -453,7 +453,7 @@
         0,
         null
       ],
-      "/home/ubuntu/workspace/cs169ocf/app/controllers/forms_controller.rb": [
+      "/home/ubuntu/workspace/admin/app/controllers/forms_controller.rb": [
         1,
         null,
         null,
@@ -504,24 +504,16 @@
         null,
         null,
         1,
-        0,
-        0,
-        0,
-        0,
-        null,
-        0,
-        0,
         null,
         null,
         null,
         null,
         null,
         null,
-        1,
-        0,
-        0,
-        0,
-        0,
+        null,
+        null,
+        null,
+        null,
         null,
         null,
         null,
@@ -529,27 +521,36 @@
         null,
         null,
         null,
-        0,
-        null,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
         null,
         null,
-        0,
-        0,
+        null,
+        null,
+        1,
+        null,
         null,
         null,
         0,
         null,
         null,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
         null,
         null,
+        0,
+        0,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        0,
         null,
         null,
         1,
@@ -564,22 +565,22 @@
         null,
         null
       ],
-      "/home/ubuntu/workspace/cs169ocf/app/controllers/application_controller.rb": [
+      "/home/ubuntu/workspace/admin/app/controllers/application_controller.rb": [
         1,
         null,
         null,
         1,
         null
       ],
-      "/home/ubuntu/workspace/cs169ocf/app/helpers/application_helper.rb": [
+      "/home/ubuntu/workspace/admin/app/helpers/application_helper.rb": [
         1,
         null
       ],
-      "/home/ubuntu/workspace/cs169ocf/app/helpers/forms_helper.rb": [
+      "/home/ubuntu/workspace/admin/app/helpers/forms_helper.rb": [
         1,
         null
       ]
     },
-    "timestamp": 1461108034
+    "timestamp": 1461841868
   }
 }

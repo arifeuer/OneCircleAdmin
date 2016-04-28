@@ -21,16 +21,15 @@ ActiveRecord::Schema.define(version: 20160415091302) do
     t.string   "certification_number"
     t.string   "start_date"
     t.string   "end_date"
-    t.string   "location"# 
-    t.string   "certified_date" # < - need to add in trainings
+    t.string   "location"
+    t.string   "certified_date"
     t.string   "course_title"
-    t.string   "total_participants" # < - need to add in trainings
+    t.string   "total_participants"
   end
 
   create_table "trainings", force: :cascade do |t|
     t.string "training_title"
     t.string "training_type"
-    t.string "trainer"
     t.string "location"
     t.string "certification_number"
     t.string "course_start_date"

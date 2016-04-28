@@ -105,11 +105,14 @@ Then /^I should get a download with the filename "([^\"]*)"$/ do |filename|
 end
 
 When /^I log in$/ do
-  fill_in "user_email", :with => "ocfadmin@berkeley.edu"
-  fill_in "user_password", :with => "administrator"
-  click_button("login")
+  email = 'testing@man.net'
+  password = 'secretpass'
+  User.new(:email => email, :password => password, :password_confirmation => password).save!
+  fill_in "user_email", :with => email
+  fill_in "user_password", :with => password
+  click_button "login"
 end
 
 When /^I logout$/ do 
-  click_button("logout")
+  click_link "logout"
 end
