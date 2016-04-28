@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 20160415091302) do
     t.string   "type"
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
-    t.string   "stcOfield_representative"
+    t.string   "stc_field_representative"
     t.string   "certification_number"
     t.string   "start_date"
     t.string   "end_date"
