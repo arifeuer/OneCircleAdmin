@@ -12,7 +12,7 @@ Background: training in database
   | Miller Public Schools         | NASW           | Alex Sung    | New York      | 67890                | 2006-05-07 00:00:00 | 2006-05-08 00:00:00	|
   | Worchester Charter Schools    | CE             | Arun Pingali | Boston        | aaaaa                | 2006-06-08 00:00:00 | 2006-06-09 00:00:00	|
   | #####INVALID#####             | ????           | John Doe     | ??????        | ?????                | 1970-01-01 00:00:00 | 1970-01-02 00:00:00	|
-
+  
   # Given the following trainings exist:   --> this line is unncessary for the first MVP since we do not have 
   # a list of trainings on the home page. Insteaf we are creating a new training by completing the form -Kishan
 
