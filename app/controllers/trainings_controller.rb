@@ -53,19 +53,25 @@ class TrainingsController < ApplicationController
     #Using docx_replace gem
     #https://github.com/adamalbrecht/docx_replace
     
-    if @type != "STC" or @type != "CE" or @type != "NASW"
-      if File.exist?("#{Rails.root}/lib/heroku_forms/"+@sheet+".docx")
-        doc = DocxReplace::Doc.new("#{Rails.root}/lib/heroku_forms/"+@sheet+".docx", "#{Rails.root}/tmp")
-      else
-        doc = DocxReplace::Doc.new("#{Rails.root}/lib/form_templates/STC_Sign_In_Template_Public.docx", "#{Rails.root}/tmp")
-      end
-    else
-      if File.exist?("#{Rails.root}/lib/heroku_forms/"+@type+"_"+@sheet+".docx")
+    if File.exist?("#{Rails.root}/lib/heroku_forms/"+@type+"_"+@sheet+".docx")
         doc = DocxReplace::Doc.new("#{Rails.root}/lib/heroku_forms/"+@type+"_"+@sheet+".docx", "#{Rails.root}/tmp")
       else
         doc = DocxReplace::Doc.new("#{Rails.root}/lib/form_templates/STC_Sign_In_Template_Public.docx", "#{Rails.root}/tmp")
       end
-    end
+    
+    # if @type != "STC" or @type != "CE" or @type != "NASW"
+    #   if File.exist?("#{Rails.root}/lib/heroku_forms/"+@sheet+".docx")
+    #     doc = DocxReplace::Doc.new("#{Rails.root}/lib/heroku_forms/"+@sheet+".docx", "#{Rails.root}/tmp")
+    #   else
+    #     doc = DocxReplace::Doc.new("#{Rails.root}/lib/form_templates/STC_Sign_In_Template_Public.docx", "#{Rails.root}/tmp")
+    #   end
+    # else
+    #   if File.exist?("#{Rails.root}/lib/heroku_forms/"+@type+"_"+@sheet+".docx")
+    #     doc = DocxReplace::Doc.new("#{Rails.root}/lib/heroku_forms/"+@type+"_"+@sheet+".docx", "#{Rails.root}/tmp")
+    #   else
+    #     doc = DocxReplace::Doc.new("#{Rails.root}/lib/form_templates/STC_Sign_In_Template_Public.docx", "#{Rails.root}/tmp")
+    #   end
+    # end
 
 
     # Replace some variables. $var$ convention is used here, but not required.
