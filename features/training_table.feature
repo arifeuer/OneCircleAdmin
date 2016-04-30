@@ -71,4 +71,4 @@ Scenario: Sad Path (Invalid or ilformated Training)
   And I log in
   And I follow Generate on the Training with the Title "#####INVALID#####"
   And I press "Course_Evaluation"
-  Then I should get a download with the filename "????_Course_Evaluation_Sheet.docx"
+  Then I should get a download with the filename "????_STC_Course_Evaluation_Sheet.docx"

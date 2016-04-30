@@ -1,4 +1,4 @@
-= form_tag trainings_path(:id => @id, :type => "other") do
+= form_tag trainings_path(:id => @id, :type => @type) do
     = submit_tag 'Generate Sign-in Sheet', value: "STC_Sign_In"
     %br
     %br

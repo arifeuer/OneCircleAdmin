@@ -53,7 +53,7 @@ class TrainingsController < ApplicationController
     #Using docx_replace gem
     #https://github.com/adamalbrecht/docx_replace
     
-    if @type == "other"
+    if @type != "STC" or @type != "CE" or @type != "NASW"
       if File.exist?("#{Rails.root}/lib/heroku_forms/"+@sheet+".docx")
         doc = DocxReplace::Doc.new("#{Rails.root}/lib/heroku_forms/"+@sheet+".docx", "#{Rails.root}/tmp")
       else
