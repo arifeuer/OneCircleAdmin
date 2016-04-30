@@ -14,22 +14,22 @@
 # Trainings.create!([{training_title: 'Mission Hill Community Center'}, {training_type: 'MODA Training'}, {location: 'Honolulu, HI 96811'},  {certification_number: 'aaaaaa'}, {course_start_date: '2006-04-19 00:00:00'}, {course_end_date: '2006-04-20 00:00:00'}])
 
 
-trainings = [{:training_title => 'Springfield Public Schools', :training_type => 'STC', :trainer => 'Alex Sung',  :location => 'San Rafael, CA 94901',  :certification_number => 'aaaaaa', :course_start_date => '2006-04-06 00:00:00', :course_end_date => '2006-04-07 00:00:00' },
-            {:training_title => 'Alex Schools', :training_type => 'NASW',:trainer => 'Jay Iyer', :location => 'San Francisco, CA 94901',  :certification_number => 'bbbbbb', :course_start_date => '2006-04-06 00:00:00', :course_end_date => '2006-04-07 00:00:00' }, 
-            {:training_title => 'ARUN School for the specially gifted', :training_type => 'CE',:trainer => 'Pingles', :location => 'St. Kishan, CA 94901',  :certification_number => 'nukkajaz', :course_start_date => '2006-04-06 00:00:00', :course_end_date => '2006-04-07 00:00:00' },
-            {:training_title => '#####INVALID#####', :training_type => '????',:trainer => 'John Doe', :location => '?????, ??',  :certification_number => '?????', :course_start_date => '1970-01-01 00:00:00', :course_end_date => '1970-01-02 00:00:00'} 
-] 
+# trainings = [{:training_title => 'Springfield Public Schools', :training_type => 'STC', :trainer => 'Alex Sung',  :location => 'San Rafael, CA 94901',  :certification_number => 'aaaaaa', :course_start_date => '2006-04-06 00:00:00', :course_end_date => '2006-04-07 00:00:00' },
+#             {:training_title => 'Alex Schools', :training_type => 'NASW',:trainer => 'Jay Iyer', :location => 'San Francisco, CA 94901',  :certification_number => 'bbbbbb', :course_start_date => '2006-04-06 00:00:00', :course_end_date => '2006-04-07 00:00:00' }, 
+#             {:training_title => 'ARUN School for the specially gifted', :training_type => 'CE',:trainer => 'Pingles', :location => 'St. Kishan, CA 94901',  :certification_number => 'nukkajaz', :course_start_date => '2006-04-06 00:00:00', :course_end_date => '2006-04-07 00:00:00' },
+#             {:training_title => '#####INVALID#####', :training_type => '????',:trainer => 'John Doe', :location => '?????, ??',  :certification_number => '?????', :course_start_date => '1970-01-01 00:00:00', :course_end_date => '1970-01-02 00:00:00'} 
+# ] 
             
-trainings.each do |training|
-    Trainings.create!(training)
-end 
+# trainings.each do |training|
+#     Trainings.create!(training)
+# end 
 
 
-user = User.new
-user.email = 'test@testmail.com'
-user.password = 'password'
-user.password_confirmation = 'password'
-user.save!
+# user = User.new
+# user.email = 'test@testmail.com'
+# user.password = 'password'
+# user.password_confirmation = 'password'
+# user.save!
 
 
 # user = User.new
