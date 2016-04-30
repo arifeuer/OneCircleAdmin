@@ -87,11 +87,8 @@ class TrainingsController < ApplicationController
     #flash[:notice] = "File Downloaded"
     
     #redirect_to new_form_path
-    if @type == "other" 
-      send_file tmp_file.path, filename: @sheet+"_Sheet.docx", disposition: 'attachment'
-    else
-      send_file tmp_file.path, filename: @type+"_"+@sheet+"_Sheet.docx", disposition: 'attachment'
-    end
+
+    send_file tmp_file.path, filename: @type+"_"+@sheet+"_Sheet.docx", disposition: 'attachment'
   end
 
   
