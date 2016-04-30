@@ -53,11 +53,20 @@ class TrainingsController < ApplicationController
     #Using docx_replace gem
     #https://github.com/adamalbrecht/docx_replace
     
-    if File.exist?("#{Rails.root}/lib/heroku_forms/"+@type+"_"+@sheet+".docx")
-      doc = DocxReplace::Doc.new("#{Rails.root}/lib/heroku_forms/"+@type+"_"+@sheet+".docx", "#{Rails.root}/tmp")
+    if @type == "other"
+      if File.exist?("#{Rails.root}/lib/heroku_forms/"+@sheet+".docx")
+        doc = DocxReplace::Doc.new("#{Rails.root}/lib/heroku_forms/"+@sheet+".docx", "#{Rails.root}/tmp")
+      else
+        doc = DocxReplace::Doc.new("#{Rails.root}/lib/form_templates/STC_Sign_In_Template_Public.docx", "#{Rails.root}/tmp")
+      end
     else
-      doc = DocxReplace::Doc.new("#{Rails.root}/lib/form_templates/STC_Sign_In_Template_Public.docx", "#{Rails.root}/tmp")
+      if File.exist?("#{Rails.root}/lib/heroku_forms/"+@type+"_"+@sheet+".docx")
+        doc = DocxReplace::Doc.new("#{Rails.root}/lib/heroku_forms/"+@type+"_"+@sheet+".docx", "#{Rails.root}/tmp")
+      else
+        doc = DocxReplace::Doc.new("#{Rails.root}/lib/form_templates/STC_Sign_In_Template_Public.docx", "#{Rails.root}/tmp")
+      end
     end
+
 
     # Replace some variables. $var$ convention is used here, but not required.
     doc.replace("FIELD_REP", @training.trainer)
@@ -78,7 +87,11 @@ class TrainingsController < ApplicationController
     #flash[:notice] = "File Downloaded"
     
     #redirect_to new_form_path
-    send_file tmp_file.path, filename: @type+"_"+@sheet+"_Sheet.docx", disposition: 'attachment'
+    if @type == "other" 
+      send_file tmp_file.path, filename: @sheet+"_Sheet.docx", disposition: 'attachment'
+    else
+      send_file tmp_file.path, filename: @type+"_"+@sheet+"_Sheet.docx", disposition: 'attachment'
+    end
   end
 
   

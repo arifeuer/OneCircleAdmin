@@ -1,13 +1,19 @@
-= form_tag trainings_path(:id => @id, :type => @type) do
-    = submit_tag 'Generate Sign-in Sheet', value: "Sign_In"
+= form_tag trainings_path(:id => @id, :type => "other") do
+    = submit_tag 'Generate Sign-in Sheet', value: "STC_Sign_In"
     %br
     %br
-    = submit_tag('Generate Course Evaluation', value: "Course_Evaluation")
+    = submit_tag('Generate Course Evaluation', value: "STC_Course_Evaluation")
     %br
     %br
-    = submit_tag('Generate TCFT Completion Certificates', value: "TCFT_Completion_Certificate")
+    = submit_tag('Generate TCFT Completion Certificates', value: "STC_TCFT_Completion_Certificate")
     %br
     %br
-    = submit_tag('Generate GCFT Completion Certificates', value: "GCFT_Completion_Certificate")
+    = submit_tag('Generate GCFT Completion Certificates', value: "STC_GCFT_Completion_Certificate")
+    %br
+    %br
+    = submit_tag 'Generate Sign-in Sheet', value: "CE_Sign_In"
+    %br
+    %br
+    = submit_tag 'Generate Sign-in Sheet', value: "NASW_Sign_In"
     %br
     %br
